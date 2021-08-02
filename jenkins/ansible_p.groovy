@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage("checkout") {
             steps {
-                git 'https://github.com/wandervik/flask_api-deploy'
+                git branch: 'main', url: 'https://github.com/wandervik/flask_api-deploy'
 
             }
 
@@ -12,7 +12,7 @@ pipeline {
 
         stage("execute ansible playbook") {
             steps {
-                ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'ansible_env', inventory: 'ansible/inventory', playbook: '/ansible/old_playbooks/test_connection.yml'
+                ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'ansible_env', inventory: 'ansible/inventory', playbook: 'ansible/old_playbooks/test_connection.yml'
             }
 
         }
