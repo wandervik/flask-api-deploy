@@ -1,0 +1,4 @@
+db_user: api 
+db_pass: 1234qwe
+db_name: api
+db_host: localhost

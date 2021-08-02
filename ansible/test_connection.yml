@@ -1,0 +1,13 @@
+---
+- name: test connection
+  hosts: fa_machine
+  remote_user: admin_fa
+  become: true
+#  ansible_sudo_pass: admin
+  
+  tasks:
+    - name: test
+      ansible.builtin.file:
+        path: /home/admin_fa
+        state: touch
+

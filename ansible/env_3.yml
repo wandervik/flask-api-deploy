@@ -1,0 +1,32 @@
+#Setting the environment for Flask-api
+
+--- 
+- name: Install required libs
+  hosts: fa_machine
+  remote_user: admin_fa
+  become: true
+
+
+  tasks:
+    - name: "Install git"
+      apt: 
+        name: git
+        state: present
+
+
+    - name: "Clone repository"
+      ansible.builtin.git:
+        repo: https://github.com/ei-roslyakov/flask-api.git
+        dest: /home/admin_fa/flask-api
+
+    - name: "Install libpq-dev"
+      apt:
+        name: libpq-dev
+
+ 
+    - name: "Install python requirements"
+      pip:
+        requirements: /home/admin_fa/flask-api/api/requirements-dev.txt
+    
+
+    
