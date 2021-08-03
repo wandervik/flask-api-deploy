@@ -5,7 +5,7 @@
   become: true
 
   vars_files:
-    - vars.yml  # contains variables for connection to the db
+    - vars.yml  # variables for connection to the db
 
 
   tasks:
@@ -57,9 +57,9 @@
         image: postgres:latest
         ports: 5432:5432
         env: 
-            POSTGRES_DB: ${{ db_name }}
-            POSTGRES_USER: ${{ db_user }}
-            POSTGRES_PASSWORD: ${{ db_pass }}
+            POSTGRES_DB: api
+            POSTGRES_USER: api
+            POSTGRES_PASSWORD: 1234qwe
 
 # Git installation 
 
@@ -75,7 +75,7 @@
         repo: https://github.com/ei-roslyakov/flask-api.git
         dest: /home/admin_fa/flask-api
 
-    - name: "Install libpq-dev" # Libpq-dev is need to be installed before the other requirements from the txt file
+    - name: "Install libpq-dev" # Libpq-dev is need to be installed before the following requirements 
       apt:
         name: libpq-dev
 

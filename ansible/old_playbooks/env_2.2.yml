@@ -6,9 +6,6 @@
   remote_user: admin_fa
   become: true
 
-  vars_files:
-    - vars.yml
-
   tasks:
     # - name: Pull Postgres Docker image
     #   docker_image:
