@@ -15,8 +15,8 @@ node {
 
         stage ('Starting app') {
 
-               sshCommand remote: remote, command: 'cd /home/admin_fa/app/api' 
-               sshCommand remote: remote, command: 'python3 -m app.app'
+               sshCommand remote: remote, command: 'cd /home/admin_fa/app/api; python3 -m app.app &' 
+           
         }
         
 
