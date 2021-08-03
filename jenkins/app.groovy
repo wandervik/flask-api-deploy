@@ -6,11 +6,11 @@ remote.password = 'admin'
 remote.allowAnyHosts = true
 
 node {
-        // stage ('Pulling repository') {
+        stage ('Pulling repository') {
 
-        //         sshCommand remote: remote, command: 'git clone https://github.com/ei-roslyakov/flask-api.git /home/admin_fa/app'
+                sshCommand remote: remote, command: 'git clone https://github.com/ei-roslyakov/flask-api.git /home/admin_fa/app'
             
-        // }
+        }
 
 
         stage ('Starting app') {
