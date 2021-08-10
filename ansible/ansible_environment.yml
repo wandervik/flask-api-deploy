@@ -83,5 +83,14 @@
     - name: "Install python requirements"
       pip:
         requirements: /home/admin_fa/flask-api/api/requirements-dev.txt
-    
+
+
+# Nginx installation
+
+    - name: "Nginx installation"
+      apt:
+        name: nginx
+        state: latest
+        
+
           
