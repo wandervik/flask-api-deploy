@@ -18,7 +18,7 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Install Ansible
-        run: apt install ansible
+        run: sudo apt install ansible
 
       # Runs a set of commands using the runners shell
       - name: Run code test
