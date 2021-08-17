@@ -1,6 +1,6 @@
 # flask-api-deploy
 
-test2
+test
 
 - to run playbook -
 ```shell
