@@ -9,7 +9,7 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-  test_ansible_code:
+  build:
     runs-on: ubuntu-latest
 
     steps:
