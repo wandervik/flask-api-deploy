@@ -22,4 +22,4 @@ jobs:
 
       # Runs a set of commands using the runners shell
       - name: Run code test
-        run: ansible-playbook ansible_environment.yml --syntax-check
+        run: ansible-playbook ./ansible/ansible_environment.yml --syntax-check
