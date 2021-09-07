@@ -22,6 +22,5 @@ jobs:
       - name: Run code test
         run: ansible-playbook 
              ./ansible/ansible_environment.yml
-             ./ansible/ansible_environment_2.yml  
-             ./ansible/vars.yml  
+             ./ansible/ansible_environment_2.yml
              --syntax-check
