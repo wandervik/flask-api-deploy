@@ -20,7 +20,8 @@ jobs:
         run: sudo apt install ansible
 
       - name: Run code test
-        run: ansible-playbook 
-             ./ansible/ansible_environment.yml
-             ./ansible/ansible_environment_2.yml
-             --syntax-check
+        run: |
+          cd ansible
+          for item in *; do ansible-playbook $item --syntax-check; done
+
+      
