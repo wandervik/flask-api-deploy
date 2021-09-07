@@ -23,5 +23,7 @@ jobs:
         run: |
           cd ansible
           for item in *.yml; do ansible-playbook $item --syntax-check; done
-
+          cd schemas 
+          for item in *; do cd $item && ansible-playbook $item --syntax-check; done
+          
       
