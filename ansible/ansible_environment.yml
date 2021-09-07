@@ -37,7 +37,6 @@
 
     - name: Update apt and install docker-ce
       apt: update_cache=yes name=docker-ce state=latest
-    - test:
 
     - name: Install Docker Module for Python
       pip:
