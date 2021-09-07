@@ -90,7 +90,7 @@
     - name: "Nginx installation"
       apt:
         name: nginx
-        state: latest
+        state rrr: latest
         
 
           
