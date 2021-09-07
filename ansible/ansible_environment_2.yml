@@ -1,0 +1,95 @@
+--- 
+- name: Creating environment for the Flask-api
+  hosts: fa_machine
+  remote_user: admin_fa
+  become: true
+
+  vars_files:
+    - vars.yml  # variables for connection to the db
+
+
+  tasks:
+    - name: "Install pip3"
+      apt:
+          name: python3-pip
+
+    - name: "Install curl"
+      apt:
+          name: curl
+
+# Docker installation
+    - name: Install aptitude using apt
+      apt: name=aptitude state=latest update_cache=yes force_apt_get=yes
+
+    - name: Install required system packages
+      apt: name={{ item }} state=latest update_cache=yes
+      loop: [ 'apt-transport-https', 'ca-certificates', 'curl', 'software-properties-common', 'python3-pip', 'virtualenv', 'python3-setuptools']
+
+    - name: Add Docker GPG apt Key
+      apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
+
+    - name: Add Docker Repository
+      apt_repository:
+        repo: deb https://download.docker.com/linux/ubuntu bionic stable
+        state: present
+
+    - name: Update apt and install docker-ce
+      apt: update_cache=yes name=docker-ce state=latest
+
+    - name: Install Docker Module for Python
+      pip:
+        name: docker
+
+
+# Pulling and running Postgres 
+
+    - name: Pull Postgres Docker image
+      docker_image:
+        name: postgres
+        source: pull
+    
+    - name: Run Postgres image
+      docker_container: 
+        name: postgres
+        image: postgres:latest
+        ports: 5432:5432
+        env: 
+            POSTGRES_DB: api
+            POSTGRES_USER: api
+            POSTGRES_PASSWORD: 1234qwe
+
+# Git installation 
+
+    - name: "Install git"
+      apt: 
+        name: git
+        state: present
+
+# Cloning repository of the Flask-api
+
+    - name: "Clone repository"
+      ansible.builtin.git:
+        repo: https://github.com/ei-roslyakov/flask-api.git
+        dest: /home/admin_fa/flask-api
+
+    - name: "Install libpq-dev" # Libpq-dev is need to be installed before the following requirements 
+      apt:
+        name: libpq-dev
+
+ 
+    - name: "Install python requirements"
+      pip:
+        requirements: /home/admin_fa/flask-api/api/requirements-dev.txt
+
+
+# Nginx installation
+
+    - name: "Nginx installation"
+      apt:
+        name: nginx
+        state: latest
+        
+
+          
