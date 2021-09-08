@@ -24,7 +24,7 @@ jobs:
 
       - name: Install Ansible Lint 
         run: |
-          sudo pip3 install ansible==2.9.6
+          sudo pip3 install ansible
           sudo pip3 install ansible-lint
 
       - name: Run code test
