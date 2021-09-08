@@ -16,14 +16,16 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      - name: Install Ansible
-        run: sudo apt-get install ansible
+      # - name: Install Ansible
+      #   run: sudo apt-get install ansible
 
       - name: Install pip3 
         run: sudo apt-get install python3-pip
 
       - name: Install Ansible Lint 
-        run: sudo pip3 install ansible-lint
+        run: |
+          sudo -H pip install ansible==2.9.6
+          sudo pip3 install ansible-lint
 
       - name: Run code test
         run: |
