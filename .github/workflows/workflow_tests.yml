@@ -28,5 +28,5 @@ jobs:
       - name: Run code test
         run: |
           cd ansible
-          find . -name "*.yml" | xargs ansible-lint --syntax-check
+          find . -name "*.yml" | xargs ansible-lint -p
       
