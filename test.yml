@@ -1,0 +1,18 @@
+--- 
+- name: Creating environment for the Flask-api
+  hosts: fa_machine
+  remote_user: admin_fa
+  become: true
+
+  vars_files:
+    - vars.yml  # variables for connection to the db
+
+
+  tasks:
+    - name: "Install pip3"
+      apt:
+          name: python3-pip
+
+    - name: "Install curl"
+      apt:
+          name: curl
