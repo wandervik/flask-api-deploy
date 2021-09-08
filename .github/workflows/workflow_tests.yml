@@ -19,11 +19,14 @@ jobs:
       - name: Install Ansible
         run: sudo apt install ansible
 
+      - name: Install pip3 
+        run: sudo apt install python3-pip
+
+      - name: Install Ansible Lint 
+        run: sudo pip3 install ansible-lint
+
       - name: Run code test
         run: |
           cd ansible
-          for item in *.yml; do ansible-playbook $item --syntax-check; done
-          cd schemas 
-          for item in *; do cd $item && ansible-playbook $item --syntax-check; done
-          
+          find . -name "*.yml" | xargs ansible-lint --syntax-check
       
