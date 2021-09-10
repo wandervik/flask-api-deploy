@@ -29,8 +29,6 @@ jobs:
 
       - name: Run code test
         run: |
-          ansible --version
-          ansible-lint --version
           cd ansible
           find . -name "*.yml" | xargs ansible-lint -p
       
