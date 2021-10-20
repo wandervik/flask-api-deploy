@@ -22,7 +22,7 @@ jobs:
       - name: Run playbook
         run: |
           cd ansible/
-          ansible-playbook --connection=local --inventory 127.0.0.1, --limit 127.0.0.1 ansible_test.yml
+          ansible-playbook --connection=local --inventory 127.0.0.1, --limit 127.0.0.1 ansible_test.yml -i inventory
 
 
 # ansible-playbook \
