@@ -8,3 +8,8 @@
     - name: "Install pip3"
       apt:
           name: python3-pip
+
+    - name: "Touch file"
+      file:
+        path: /home/loopec/test.txt
+        state: touch
