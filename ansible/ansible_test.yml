@@ -1,0 +1,10 @@
+---
+- name: Creating test environment
+  hosts: localhost
+  connection: local
+  become: true
+
+  tasks:
+    - name: "Install pip3"
+      apt:
+          name: python3-pip

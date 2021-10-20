@@ -22,4 +22,4 @@ jobs:
       - name: Run playbook
         run: |
           cd ansible/
-          ansible-playbook -i inventory ansible-environment.yml
+          ansible-playbook ansible_test.yml
