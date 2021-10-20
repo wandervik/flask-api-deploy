@@ -1,0 +1,25 @@
+name: CI TEST
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+
+  test:
+    name: Test run of Ansible playbooks
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install Ansible
+        run: sudo apt-get install ansible
+
+      - name: Create loopec user
+        run: sudo adduser loopec
+
+      - name: Run playbook
+        run: |
+          cd ansible/
+          ansible-playbook -i inventory ansible-environment.yml
