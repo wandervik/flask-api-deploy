@@ -1,8 +1,8 @@
 ---
 - name: Creating test environment
-  hosts: localhost
-  connection: local
-  become: true
+- hosts: all
+  remote_user: loopec
+  become: yes
 
   tasks:
     - name: "Install pip3"
