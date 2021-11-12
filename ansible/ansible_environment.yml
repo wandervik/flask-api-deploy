@@ -1,7 +1,7 @@
---- 
+---
 - name: Creating environment for the Flask-api
   hosts: fa_machine
-  remote_user: admin_fa
+  remote_user: fa-admin
   become: true
 
   vars_files:
@@ -43,27 +43,27 @@
         name: docker
 
 
-# Pulling and running Postgres 
+# Pulling and running Postgres
 
     - name: Pull Postgres Docker image
       docker_image:
         name: postgres
         source: pull
-    
+
     - name: Run Postgres image
-      docker_container: 
+      docker_container:
         name: postgres
         image: postgres:latest
         ports: 5432:5432
-        env: 
+        env:
             POSTGRES_DB: api
             POSTGRES_USER: api
             POSTGRES_PASSWORD: 1234qwe
 
-# Git installation 
+# Git installation
 
     - name: "Install git"
-      apt: 
+      apt:
         name: git
         state: present
 
@@ -74,11 +74,11 @@
         repo: https://github.com/ei-roslyakov/flask-api.git
         dest: /home/admin_fa/flask-api
 
-    - name: "Install libpq-dev" # Libpq-dev is need to be installed before the following requirements 
+    - name: "Install libpq-dev" # Libpq-dev is need to be installed before the following requirements
       apt:
         name: libpq-dev
 
- 
+
     - name: "Install python requirements"
       pip:
         requirements: /home/admin_fa/flask-api/api/requirements-dev.txt
@@ -90,6 +90,5 @@
       apt:
         name: nginx
         state: latest
-        
 
-          
+
